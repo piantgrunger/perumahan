@@ -38,7 +38,7 @@ class LoginForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' =>'NIP',
+            'username' =>'Username',
         ];
     }
 

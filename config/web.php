@@ -5,8 +5,8 @@ use \kartik\datecontrol\Module;
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'bacarek',
-    'name' => 'bacarek uinsa',
+    'id' => 'Perumahan',
+    'name' => 'Perumahan',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -20,16 +20,16 @@ $config = [
         'site/*',
  //       'site/login',
    //     'site/login-from-ctrl',
-       
+
         'debug/*',
         'route/*',
         'role/*',
        'user/*',
        'gii/*',
-       
+
         'mimin/*', // only in dev mode
     ],
-    
+
 ],
 
 
@@ -79,7 +79,7 @@ $config = [
             ]
        ]
     ],
-    
+
 
 
 
@@ -102,13 +102,13 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
-      
+
       'formatter' => [
         'class' => 'yii\i18n\Formatter',
         'nullDisplay' => '',
     ],
-      
-        
+
+
 
 
        'authManager' => [
@@ -136,7 +136,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
      //       'class' => 'app\models\BaseUser',
-          
+
             //'enableAutoLogin' => true,
             'enableSession' => true,
             'authTimeout' => 60*30,
@@ -178,8 +178,8 @@ $config = [
         'db' => require(__DIR__ . '/db.php'),
 //        'db_siakad' => require(__DIR__ . '/db_siakad.php'),
   //      'db_simpeg' => require(__DIR__ . '/db_simpeg.php'),
-        
-        
+
+
     ],
     'params' => $params,
 ];
@@ -190,16 +190,16 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
-       
+
        'allowedIPs' => ['*'],
-      
+
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'allowedIPs' => ['*'],
         'class' => 'yii\gii\Module',
-     
+
     ];
 }
 

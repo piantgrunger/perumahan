@@ -9,9 +9,26 @@ use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+use hscstudio\mimin\components\Mimin;
+
+$menuItems =[
+    ['label' => 'Home', 'url' => ['/site/index']],
+    ['label' => 'Master','url' => '#' , 'items' =>[
+        ['label' => 'Data Security', 'url' => ['/security/index']],
+        ['label' =>'Data RFID', 'url' => ['/rfid/index']],
+
+
+    ]]
+
+
+    ];
+
+    $menuItems = Mimin::filterMenu($menuItems);
+
 
 AppAsset::register($this);
-$this->title = 'Pemilihan Rektor UIN Sunan Ampel';
+
+$this->title = 'Perumahan';
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -29,8 +46,7 @@ $this->title = 'Pemilihan Rektor UIN Sunan Ampel';
 <header>
     <?php
     NavBar::begin([
-        'brandLabel' => 'UIN Sunan Ampel Surabaya <br>
-       <span> PEMILIHAN CALON REKTOR 2022-2026</span>',
+        'brandLabel' => 'Sistem Informasi Perumahan',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar navbar-expand-md navbar-dark bg-green sticky-top',
@@ -38,22 +54,14 @@ $this->title = 'Pemilihan Rektor UIN Sunan Ampel';
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav mr-auto'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Peraturan', 'url' => ['/site/peraturan']],
-            ['label' => 'Jadwal', 'url' => ['/site/jadwal']],
-            ['label' => 'Persyaratan', 'url' => ['/site/persyaratan']],
-            
-    
-        ]
-          
-        
+        'items' => $menuItems
+
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav ml-auto'],
         'items' => [
              Yii::$app->user->isGuest ? (
-                 ['label' => 'Pendaftaran', 'url' => ['/site/login']]
+                 ['label' => 'Login', 'url' => ['/site/login']]
              ) : (
                  '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
@@ -72,7 +80,10 @@ $this->title = 'Pemilihan Rektor UIN Sunan Ampel';
 
 <main role="main" class="flex-shrink-0">
     <div class="container">
-    
+    <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
+
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
@@ -80,15 +91,9 @@ $this->title = 'Pemilihan Rektor UIN Sunan Ampel';
 
 <footer id="footer" class="footer mt-auto h-auto navbar-dark py-3 text-white">
     <div class="container">
-        <p class="float-left">Sekretariat: <br>
-Gedung Twin Towers A Lantai 5 <br>
-Jl. Jend. A. Yani 117 Surabaya, Jawa Timur, Indonesia <br>
-Kode Pos 60237 <br>
-Email: bacarek@uinsby.ac.id <br>
-Telp: 031 8410298</p>
+        <p class="float-left"></p>
         <p class="float-right">
-				© 2022 by Tim Seleksi Bakal Calon Rektor UIN Sunan Ampel Surabaya.
-			</p>
+					</p>
     </div>
 </footer>
 

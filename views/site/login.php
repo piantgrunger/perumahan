@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
     <div class="body-content">
-            <h2>Pendaftaran</h2>
+            <h2>Login</h2>
 
      
             <?php $form = ActiveForm::begin([
